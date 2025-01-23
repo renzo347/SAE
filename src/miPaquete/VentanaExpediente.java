@@ -290,38 +290,43 @@ public class VentanaExpediente extends JFrame {
 		
 		JLabel lblCaratula_pd = new JLabel("<html> Caratula: <b>" + caratula_completa + "</b></html>");
 		lblCaratula_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCaratula_pd.setBounds(10, 29, 530, 22);
+		lblCaratula_pd.setBounds(15, 29, 525, 22);
 		panel_expediente.add(lblCaratula_pd);
 		
 		JLabel lblExpte_pd = new JLabel("<html> Expte:<b>" + expte + "</b></html>");
 		lblExpte_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblExpte_pd.setBounds(549, 29, 142, 22);
+		lblExpte_pd.setBounds(550, 29, 142, 22);
 		panel_expediente.add(lblExpte_pd);
 		
 		JLabel lblTipo_proceso_pd = new JLabel("<html> Tipo proceso: <b>" + tipo + "</b></html>");
 		lblTipo_proceso_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTipo_proceso_pd.setBounds(174, 54, 314, 24);
+		lblTipo_proceso_pd.setBounds(240, 54, 248, 24);
 		panel_expediente.add(lblTipo_proceso_pd);
 		
 		JLabel lblInicio_pd = new JLabel("<html> Inicio: <b>" + fechaInicio + "</b></html>");
 		lblInicio_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblInicio_pd.setBounds(10, 54, 154, 24);
+		lblInicio_pd.setBounds(15, 54, 154, 24);
 		panel_expediente.add(lblInicio_pd);
 		
 		JLabel lblEstado_pd = new JLabel("<html> Estado: <b>" + estado + "</b></html>");
 		lblEstado_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblEstado_pd.setBounds(498, 54, 182, 24);
+		lblEstado_pd.setBounds(550, 54, 182, 24);
 		panel_expediente.add(lblEstado_pd);
 		
 		JLabel lblArea_pd = new JLabel("<html> Area: <b>" + area + "</b></html>");
 		lblArea_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblArea_pd.setBounds(10, 79, 182, 22);
+		lblArea_pd.setBounds(15, 79, 182, 22);
 		panel_expediente.add(lblArea_pd);
 		
 		JLabel lblResponsable_pd = new JLabel("<html>Responsable: <b>" + responsable + "</b></html>");
 		lblResponsable_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblResponsable_pd.setBounds(240, 79, 276, 22);
 		panel_expediente.add(lblResponsable_pd);
+		
+		JLabel lblUnidad_pd = new JLabel("<html>Unidad: <b>" + unidad + "</b></html>");
+		lblUnidad_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUnidad_pd.setBounds(550, 79, 276, 22);
+		panel_expediente.add(lblUnidad_pd);
 		
 		JPanel panel_actor = new JPanel();
 		panel_actor.setBorder(new TitledBorder(null, "Actor", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -331,7 +336,7 @@ public class VentanaExpediente extends JFrame {
 		
 		JLabel lblNombreActor_pd = new JLabel("<html>Nombre: <b>" + actor +"</b></html>");
 		lblNombreActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNombreActor_pd.setBounds(10, 29, 406, 19);
+		lblNombreActor_pd.setBounds(15, 29, 406, 19);
 		panel_actor.add(lblNombreActor_pd);
 		
 		JLabel lblDniActor_pd = new JLabel("<html>DNI: <b>" + dni_actor + "</b></html>");
@@ -341,47 +346,47 @@ public class VentanaExpediente extends JFrame {
 		
 		JLabel lblMailActor_pd = new JLabel("<html>Mail: <b>" + mail_actor + "</b></html>");
 		lblMailActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMailActor_pd.setBounds(10, 79, 272, 19);
+		lblMailActor_pd.setBounds(15, 79, 272, 19);
 		panel_actor.add(lblMailActor_pd);
 		
 		JLabel lblDomicilioActor_pd = new JLabel("<html>Domicilio: <b>" + dom_actor + "</b></html>");
 		lblDomicilioActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDomicilioActor_pd.setBounds(10, 54, 533, 19);
+		lblDomicilioActor_pd.setBounds(15, 54, 533, 19);
 		panel_actor.add(lblDomicilioActor_pd);
 		
 		JLabel lblTelefonoActor_pd = new JLabel("<html> Telefono: <b>" + telefono_act + "</b></html>");
 		lblTelefonoActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelefonoActor_pd.setBounds(292, 79, 308, 19);
+		lblTelefonoActor_pd.setBounds(437, 79, 308, 19);
 		panel_actor.add(lblTelefonoActor_pd);
 		
 		JLabel lblAbogadoActor_pd = new JLabel("<html> Abogado: <b>" + abg_actor +"</b></html>");
 		lblAbogadoActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAbogadoActor_pd.setBounds(10, 104, 416, 19);
+		lblAbogadoActor_pd.setBounds(15, 104, 416, 19);
 		panel_actor.add(lblAbogadoActor_pd);
 		
 		JLabel lblCaracterActor_pd = new JLabel("<html> Caracter: <b>" + caracter_abg_Actor + "</b></html>");
 		lblCaracterActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCaracterActor_pd.setBounds(460, 104, 257, 19);
+		lblCaracterActor_pd.setBounds(437, 104, 257, 19);
 		panel_actor.add(lblCaracterActor_pd);
 		
 		JLabel lblTelAgbActor_pd = new JLabel("<html> Telefono abogado: <b>" + tel_abg_actor + "</b></html>");
 		lblTelAgbActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelAgbActor_pd.setBounds(10, 129, 309, 19);
+		lblTelAgbActor_pd.setBounds(15, 129, 309, 19);
 		panel_actor.add(lblTelAgbActor_pd);
 		
-		JLabel lblMailAbgActor_pd = new JLabel("<html> Mail Abogado: <b>"+ mail_abg_act + "</b></html>" );
+		JLabel lblMailAbgActor_pd = new JLabel("<html> Mail Abog.: <b>"+ mail_abg_act + "</b></html>" );
 		lblMailAbgActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMailAbgActor_pd.setBounds(329, 129, 214, 19);
+		lblMailAbgActor_pd.setBounds(437, 129, 272, 19);
 		panel_actor.add(lblMailAbgActor_pd);
 		
 		JLabel lblDomAbgActor_pd = new JLabel("<html> Domicilio Abogado: <b>" + dom_abg_act + "</b></html>" );
 		lblDomAbgActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDomAbgActor_pd.setBounds(10, 154, 437, 19);
+		lblDomAbgActor_pd.setBounds(15, 154, 500, 19);
 		panel_actor.add(lblDomAbgActor_pd);
 		
 		JLabel lblCasDigAbgActor_pd = new JLabel("<html> Casillero digital: <b>" + casillero_Actor + "</b></html>");
 		lblCasDigAbgActor_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCasDigAbgActor_pd.setBounds(10, 179, 230, 19);
+		lblCasDigAbgActor_pd.setBounds(15, 179, 230, 19);
 		panel_actor.add(lblCasDigAbgActor_pd);
 		
 		JPanel panel_demando = new JPanel();
@@ -393,57 +398,57 @@ public class VentanaExpediente extends JFrame {
 		
 		JLabel lblNombre_dem_pd = new JLabel("<html> Nombre: <b>" + demandado + "</b></html>");
 		lblNombre_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNombre_dem_pd.setBounds(10, 29, 406, 19);
+		lblNombre_dem_pd.setBounds(15, 29, 406, 19);
 		panel_demando.add(lblNombre_dem_pd);
 		
 		JLabel lblDomicilio_dem_pd = new JLabel("<html> Domicilio: <b>" + dom_dem + "</b></html>");
 		lblDomicilio_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDomicilio_dem_pd.setBounds(10, 54, 533, 19);
+		lblDomicilio_dem_pd.setBounds(15, 54, 533, 19);
 		panel_demando.add(lblDomicilio_dem_pd);
 		
 		JLabel lblDni_dem_pd = new JLabel("<html> DNI: <b>" + dni_dem + "</b></html>");
 		lblDni_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDni_dem_pd.setBounds(444, 29, 214, 19);
+		lblDni_dem_pd.setBounds(437, 29, 214, 19);
 		panel_demando.add(lblDni_dem_pd);
 		
 		JLabel lblMail_dem_pd = new JLabel("<html> Mail: <b>" + mail_dem + "</b></html>");
 		lblMail_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMail_dem_pd.setBounds(10, 79, 290, 19);
+		lblMail_dem_pd.setBounds(15, 79, 290, 19);
 		panel_demando.add(lblMail_dem_pd);
 		
 		JLabel lblTelefono_dem_pd = new JLabel("<html> Telefono: <b>" + telefono_dem + "</b></html>");
 		lblTelefono_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelefono_dem_pd.setBounds(310, 79, 208, 19);
+		lblTelefono_dem_pd.setBounds(437, 79, 208, 19);
 		panel_demando.add(lblTelefono_dem_pd);
 		
 		JLabel lblAbogadoDem_pd = new JLabel("<html> Abogado: <b>" + abg_dem + "</b></html>");
 		lblAbogadoDem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAbogadoDem_pd.setBounds(10, 104, 439, 19);
+		lblAbogadoDem_pd.setBounds(15, 104, 439, 19);
 		panel_demando.add(lblAbogadoDem_pd);
 		
 		JLabel lblCaracterDem_pd = new JLabel("<html> Caracter: <b>" + caracter_abg_Dem + "</b></html>");
 		lblCaracterDem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCaracterDem_pd.setBounds(459, 104, 257, 19);
+		lblCaracterDem_pd.setBounds(437, 104, 257, 19);
 		panel_demando.add(lblCaracterDem_pd);
 		
 		JLabel lblTelAbgDem_pd = new JLabel("<html> Telefono abogado: <b>" + tel_abg_dem + "</b></html>");
 		lblTelAbgDem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelAbgDem_pd.setBounds(10, 129, 333, 19);
+		lblTelAbgDem_pd.setBounds(15, 129, 333, 19);
 		panel_demando.add(lblTelAbgDem_pd);
 		
-		JLabel lblMailAbogado_dem_pd = new JLabel("<html> Mail Abogado: <b>" + mail_abg_dem + "</b></html>" );
+		JLabel lblMailAbogado_dem_pd = new JLabel("<html> Mail Abog.: <b>" + mail_abg_dem + "</b></html>" );
 		lblMailAbogado_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMailAbogado_dem_pd.setBounds(357, 129, 214, 19);
+		lblMailAbogado_dem_pd.setBounds(437, 129, 274, 19);
 		panel_demando.add(lblMailAbogado_dem_pd);
 		
 		JLabel lblDomicilioAbogado_dem_pd = new JLabel("<html> Domicilio Abogado: <b>" + dom_abg_dem + "</b></html>");
 		lblDomicilioAbogado_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDomicilioAbogado_dem_pd.setBounds(10, 154, 445, 19);
+		lblDomicilioAbogado_dem_pd.setBounds(15, 154, 445, 19);
 		panel_demando.add(lblDomicilioAbogado_dem_pd);
 		
 		JLabel lblCasilleroDigital_dem_pd = new JLabel("<html> Casillero digital: <b>" + casillero_Dem + "</b></html>");
 		lblCasilleroDigital_dem_pd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCasilleroDigital_dem_pd.setBounds(10, 179, 349, 19);
+		lblCasilleroDigital_dem_pd.setBounds(15, 179, 349, 19);
 		panel_demando.add(lblCasilleroDigital_dem_pd);
 		
 		JPanel panel_Datos = new JPanel();
@@ -497,7 +502,7 @@ public class VentanaExpediente extends JFrame {
 		lblDom.setBounds(588, 5, 29, 14);
 		panel_Datos.add(lblDom);
 		
-		JLabel lblNewLabel_1_2 = new JLabel(dom_actor);
+		JLabel lblNewLabel_1_2 = new JLabel(dom_actor + " | " + casillero_Actor);
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_1_2.setBounds(621, 5, 398, 14);
 		panel_Datos.add(lblNewLabel_1_2);
@@ -507,7 +512,7 @@ public class VentanaExpediente extends JFrame {
 		lblDom_1.setBounds(588, 25, 29, 14);
 		panel_Datos.add(lblDom_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel(dom_dem);
+		JLabel lblNewLabel_1_1_1 = new JLabel(dom_dem + " | " + casillero_Dem);
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_1_1_1.setBounds(621, 25, 398, 14);
 		panel_Datos.add(lblNewLabel_1_1_1);
@@ -543,7 +548,7 @@ public class VentanaExpediente extends JFrame {
 		panel_Datos.add(lblEstadoi);
 		
 		JPanel panel_derecho = new JPanel();
-		panel_derecho.setPreferredSize(new Dimension(100, 0));
+		panel_derecho.setPreferredSize(new Dimension(800, 0));
 		panel_derecho.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		contentPane.add(panel_derecho, BorderLayout.EAST);
 		panel_derecho.setLayout(new BorderLayout(0, 0));
@@ -680,8 +685,8 @@ public class VentanaExpediente extends JFrame {
 				casillero_Dem = con.resul.getString("dom_dig_Dem");
 				localidad_Act = con.resul.getString("loc_Act");
 				localidad_Dem = con.resul.getString("loc_Dem");
-				dom_actor = con.resul.getString("domAct")+ " - "+ localidad_Act + " | "+casillero_Actor;
-				dom_dem = con.resul.getString("domDem")+ " - "+ localidad_Dem +" | "+casillero_Dem;
+				dom_actor = con.resul.getString("domAct")+ " - "+ localidad_Act;
+				dom_dem = con.resul.getString("domDem")+ " - "+ localidad_Dem;
 				tipo = con.resul.getString("tipo_proceso");
 				caratula_completa = actor + " C/ " + demandado + " S/ " + tipo ;	
 				fechaInicio = con.resul.getString("fechaInicio");
