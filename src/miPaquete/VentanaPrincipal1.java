@@ -31,6 +31,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JCheckBox;
 import javax.swing.JTabbedPane;
 import javax.swing.DefaultComboBoxModel;
@@ -100,7 +101,7 @@ public class VentanaPrincipal1 extends JFrame {
 		
 		JMenu mnArchivo = new JMenu("Archivo");
 		mnArchivo.setBorder(new LineBorder(new Color(192, 192, 192)));
-		mnArchivo.setFont(new Font("Arial", Font.BOLD, 14));
+		mnArchivo.setFont(new Font("Arial", Font.PLAIN, 14));
 		menuBar.add(mnArchivo);
 		
 		JMenu mnConfiguración = new JMenu("Configuración");
@@ -135,12 +136,24 @@ public class VentanaPrincipal1 extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		JMenuItem mnitem_nuevoExp = new JMenuItem("Crear Expte");
+		mnitem_nuevoExp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CrearExpte dialog = new CrearExpte();
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
+		
+		mnitem_nuevoExp.setFont(new Font("Arial", Font.BOLD, 14));
+		mnArchivo.add(mnitem_nuevoExp);
 		mntmSalir.setFont(new Font("Arial", Font.BOLD, 14));
 		mnArchivo.add(mntmSalir);
 		
 		JMenu mnHerramientas = new JMenu("Herramientas");
 		mnHerramientas.setBorder(new LineBorder(new Color(192, 192, 192)));
-		mnHerramientas.setFont(new Font("Arial", Font.BOLD, 14));
+		mnHerramientas.setFont(new Font("Arial", Font.PLAIN, 14));
 		menuBar.add(mnHerramientas);
 		
 		JMenu mnListados = new JMenu("Listados");
