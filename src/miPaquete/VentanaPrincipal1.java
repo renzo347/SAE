@@ -140,7 +140,7 @@ public class VentanaPrincipal1 extends JFrame {
 		JMenuItem mnitem_nuevoExp = new JMenuItem("Crear Expte");
 		mnitem_nuevoExp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrearExpte dialog = new CrearExpte();
+				CrearExpte dialog = new CrearExpte(con);
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
 			}
