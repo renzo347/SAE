@@ -20,6 +20,8 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
 
 public class CrearExpte extends JDialog {
 
@@ -36,6 +38,14 @@ public class CrearExpte extends JDialog {
 	private int id_Actor, id_Demandado;
 
 	public CrearExpte(ConexionBd con) {
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				buscar_actor(tf_dni_actor.getText());
+				buscar_demandado(tf_dni_Dem.getText());
+			}
+			public void windowLostFocus(WindowEvent e) {
+			}
+		});
 		setTitle("CREAR EXPEDIENTE");
 		this.con = con;
 		setResizable(false);

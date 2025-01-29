@@ -128,6 +128,7 @@ public class Modificar_Parte extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						modificarDatos(id, con, parte);
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -136,6 +137,11 @@ public class Modificar_Parte extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
