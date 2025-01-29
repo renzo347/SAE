@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowEvent;
+import java.awt.Window;
 
 public class CrearExpte extends JDialog {
 
@@ -35,17 +36,25 @@ public class CrearExpte extends JDialog {
 	private JLabel lblDatos_demandado;
 	private JButton btnModificarActor;
 	private JButton btnModificar_Dem;
-	private int id_Actor, id_Demandado;
+	private int id_Actor=-1, id_Demandado=-1;
 
 	public CrearExpte(ConexionBd con) {
 		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
-				buscar_actor(tf_dni_actor.getText());
-				buscar_demandado(tf_dni_Dem.getText());
+				tf_dni_actor.setText("");
+				tf_dni_Dem.setText("");
+				Window source = e.getOppositeWindow();
+				if(source instanceof JDialog) {
+					if(((JDialog)source).getTitle().equals("MODIFICAR PARTE")) {
+						buscar_actor(id_Actor);
+						buscar_demandado(id_Demandado);					
+					}
+				}
 			}
 			public void windowLostFocus(WindowEvent e) {
 			}
 		});
+		
 		setTitle("CREAR EXPEDIENTE");
 		this.con = con;
 		setResizable(false);
@@ -83,9 +92,16 @@ public class CrearExpte extends JDialog {
 			btnNewButton.setBounds(274, 24, 83, 23);
 			panel_actor.add(btnNewButton);
 			
-			JButton btnNewButton_1 = new JButton("AGREGAR");
-			btnNewButton_1.setBounds(369, 24, 89, 23);
-			panel_actor.add(btnNewButton_1);
+			JButton btnAgregarActor = new JButton("AGREGAR");
+			btnAgregarActor.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					AgregarParte dialog = new AgregarParte(con,"Actor");
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}
+			});
+			btnAgregarActor.setBounds(369, 24, 89, 23);
+			panel_actor.add(btnAgregarActor);
 			
 			lblDatos_actor = new JLabel(datos_actor);
 			lblDatos_actor.setBorder(new LineBorder(new Color(128, 128, 128)));
@@ -131,9 +147,16 @@ public class CrearExpte extends JDialog {
 			btnNewButton.setBounds(274, 24, 83, 23);
 			panel_demandado.add(btnNewButton);
 			
-			JButton btnNewButton_2 = new JButton("AGREGAR");
-			btnNewButton_2.setBounds(368, 24, 89, 23);
-			panel_demandado.add(btnNewButton_2);
+			JButton btnAgregarDem = new JButton("AGREGAR");
+			btnAgregarDem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					AgregarParte dialog = new AgregarParte(con,"Demandado");
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}
+			});
+			btnAgregarDem.setBounds(368, 24, 89, 23);
+			panel_demandado.add(btnAgregarDem);
 			
 			lblDatos_demandado = new JLabel((String) null);
 			lblDatos_demandado.setBorder(new LineBorder(new Color(128, 128, 128)));
@@ -165,6 +188,11 @@ public class CrearExpte extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -198,6 +226,26 @@ public class CrearExpte extends JDialog {
 		}
 	}
 	
+	protected void buscar_actor(int id) {
+		if(id != -1) {
+			String query = "SELECT * FROM `partes_actora` WHERE `partes_actora`.`id` = '" + id +"';";
+			con.sendQueryExecute(query);
+			try {
+				if(con.resul.next()) {
+					datos_actor = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b> <br>DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", "
+					+ con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + "</b><br>"
+					+ "MAIL: <b>" + con.resul.getString("mail") + "</b>, TELEFONO: <b>" + con.resul.getString("telefono") +"</b>, DOMICILIO DIGITAL: <b>" + con.resul.getString("dom_digital") +"</b></html>";
+					lblDatos_actor.setText(datos_actor);
+					btnModificarActor.setEnabled(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "no se encontro parte por id");
+				}
+			}catch(SQLException e1) {
+				e1.printStackTrace();
+			}
+		}		
+	}
+	
 	protected void buscar_demandado(String dni) {
 		if(!dni.isEmpty()) {
 			String query = "SELECT * FROM `partes_demandado` WHERE `partes_demandado`.`dni` = '" + dni + "';";
@@ -223,5 +271,26 @@ public class CrearExpte extends JDialog {
 			}else {
 			return;
 		}
+	}
+	
+	protected void buscar_demandado(int id) {
+		if(id != -1) {
+			String query = "SELECT * FROM `partes_demandado` WHERE `partes_demandado`.`id` = '" + id +"';";
+			con.sendQueryExecute(query);
+				try {
+					if(con.resul.next()) {
+						datos_demandado = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b> <br>DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", "
+						+ con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + "</b><br>"
+						+ "MAIL: <b>" + con.resul.getString("mail") + "</b>, TELEFONO: <b>" + con.resul.getString("telefono") +"</b>, DOMICILIO DIGITAL: <b>" + con.resul.getString("dom_digital") +"</b></html>";
+						lblDatos_demandado.setText(datos_demandado);
+						btnModificarActor.setEnabled(true);
+					}else {
+							JOptionPane.showMessageDialog(null, "no se encontro parte por id");
+					}
+				}catch(SQLException e1) {
+					e1.printStackTrace();
+				}
+		}
+		
 	}
 }
