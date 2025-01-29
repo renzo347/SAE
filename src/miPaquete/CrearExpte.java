@@ -36,7 +36,7 @@ public class CrearExpte extends JDialog {
 	private int id_Actor, id_Demandado;
 
 	public CrearExpte(ConexionBd con) {
-		setTitle("Crear Expediente");
+		setTitle("CREAR EXPEDIENTE");
 		this.con = con;
 		setResizable(false);
 		setModal(true);
@@ -80,19 +80,19 @@ public class CrearExpte extends JDialog {
 			lblDatos_actor = new JLabel(datos_actor);
 			lblDatos_actor.setBorder(new LineBorder(new Color(128, 128, 128)));
 			lblDatos_actor.setFont(new Font("Arial", Font.PLAIN, 14));
-			lblDatos_actor.setBounds(10, 72, 825, 20);
+			lblDatos_actor.setBounds(10, 72, 825, 72);
 			panel_actor.add(lblDatos_actor);
 			
 			btnModificarActor = new JButton("MODIFICAR");
 			btnModificarActor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Modificar_Parte dialog = new Modificar_Parte(id_Actor, con);
+					Modificar_Parte dialog = new Modificar_Parte(id_Actor, con, "Actor");
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
+					dialog.setVisible(true);					
 				}
 			});
 			btnModificarActor.setEnabled(false);
-			btnModificarActor.setBounds(840, 70, 106, 23);
+			btnModificarActor.setBounds(837, 96, 106, 23);
 			panel_actor.add(btnModificarActor);
 		}
 		{
@@ -128,12 +128,19 @@ public class CrearExpte extends JDialog {
 			lblDatos_demandado = new JLabel((String) null);
 			lblDatos_demandado.setBorder(new LineBorder(new Color(128, 128, 128)));
 			lblDatos_demandado.setFont(new Font("Arial", Font.PLAIN, 14));
-			lblDatos_demandado.setBounds(10, 72, 825, 20);
+			lblDatos_demandado.setBounds(10, 72, 825, 72);
 			panel_demandado.add(lblDatos_demandado);
 			
 			btnModificar_Dem = new JButton("MODIFICAR");
+			btnModificar_Dem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Modificar_Parte dialog = new Modificar_Parte(id_Demandado, con, "Demandado");
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}
+			});
 			btnModificar_Dem.setEnabled(false);
-			btnModificar_Dem.setBounds(840, 70, 106, 23);
+			btnModificar_Dem.setBounds(837, 96, 106, 23);
 			panel_demandado.add(btnModificar_Dem);
 		}
 		{
@@ -156,13 +163,15 @@ public class CrearExpte extends JDialog {
 
 	protected void buscar_actor(String dni) {
 		if(!dni.isEmpty()) {
-			String query = "SELECT `partes_actora`.`id`, `partes_actora`.`nombre`, `partes_actora`.`dni`, `partes_actora`.`direccion`, `partes_actora`.`localidad`, `partes_actora`.`provincia` FROM `partes_actora` WHERE `partes_actora`.`dni` = '" + dni + "';";
+			String query = "SELECT * FROM `partes_actora` WHERE `partes_actora`.`dni` = '" + dni + "';";
 			con.sendQueryExecute(query);
 			
 			try {
 				if(con.resul.next()) {
 					id_Actor = con.resul.getInt("id");
-					datos_actor = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b>, DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", " + con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + ".</b></html>";
+					datos_actor = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b> <br>DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", "
+					+ con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + "</b><br>"
+					+ "MAIL: <b>" + con.resul.getString("mail") + "</b>, TELEFONO: <b>" + con.resul.getString("telefono") +"</b>, DOMICILIO DIGITAL: <b>" + con.resul.getString("dom_digital") +"</b></html>";
 					lblDatos_actor.setText(datos_actor);
 					btnModificarActor.setEnabled(true);
 				}else {
@@ -181,13 +190,15 @@ public class CrearExpte extends JDialog {
 	
 	protected void buscar_demandado(String dni) {
 		if(!dni.isEmpty()) {
-			String query = "SELECT `partes_demandado`.`id`, `partes_demandado`.`nombre`, `partes_demandado`.`dni`, `partes_demandado`.`direccion`, `partes_demandado`.`localidad`, `partes_demandado`.`provincia` FROM `partes_demandado` WHERE `partes_demandado`.`dni` = '" + dni + "';";
+			String query = "SELECT * FROM `partes_demandado` WHERE `partes_demandado`.`dni` = '" + dni + "';";
 			con.sendQueryExecute(query);
 			
 			try {
 				if(con.resul.next()) {
 					id_Demandado = con.resul.getInt("id");
-					datos_demandado = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b>, DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", " + con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + ".</b></html>";
+					datos_demandado = "<html> Nombre: <b>" + con.resul.getString("nombre") + "</b>, DNI: <b>" + con.resul.getString("dni") + "</b> <br>DIRECCIÓN: <b>" + con.resul.getString("direccion") + ", "
+							+ con.resul.getString("localidad") + ", " + con.resul.getString("provincia") + "</b><br>"
+							+ "MAIL: <b>" + con.resul.getString("mail") + "</b>, TELEFONO: <b>" + con.resul.getString("telefono") +"</b>, DOMICILIO DIGITAL: <b>" + con.resul.getString("dom_digital") +"</b></html>";
 					lblDatos_demandado.setText(datos_demandado);
 					btnModificar_Dem.setEnabled(true);
 				}else {
